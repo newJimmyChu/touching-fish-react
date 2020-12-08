@@ -38,6 +38,7 @@ export default class MainSider extends Component<Props, State> {
 
   render() {
     const { collapsed } = this.state;
+    
     return (
       <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
