@@ -1,13 +1,7 @@
-
-import MainSider from '../container/Sider/MainSider';
 import React from "react";
 
-export default class Home extends React.Component{
+const Home = () => {
+  return <div style={{ height: "100%" }}></div>;
+};
 
-	render() {
-		return (
-			<MainSider prop={{}}/>
-		);
-	}
-
-}
+export default Home;
