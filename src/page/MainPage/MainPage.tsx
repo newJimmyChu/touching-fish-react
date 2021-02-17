@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import { Grid, Icon, Menu } from "semantic-ui-react";
 import Home from "../Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import SearchBar from "../../component/SearchBar/SearchBar";
+import WordCloudContainer from "../../container/WordCloudContainer/WordCloudContainer";
 
 const MainPage = () => {
   const [activeItem, setActiveItem] = useState(0);
@@ -12,15 +14,12 @@ const MainPage = () => {
 
   return (
     <Router>
-      <Grid style={{ height: "101vh" }}>
-        <Grid.Column width={2} color="black">
-          <Menu icon="labeled" vertical inverted fluid size="large">
-            <Menu.Item
-              name="header"
-              style={{ height: "60px", textAlign: "center" }}
-            >
-              <div>Bilibili 弹幕分析助手</div>
-            </Menu.Item>
+      <Grid>
+        <Grid.Row centered>
+          <SearchBar></SearchBar>
+        </Grid.Row>
+        <Grid.Row centered>
+          <Menu icon="labeled">
             <Menu.Item
               as={Link}
               to="/home"
@@ -28,8 +27,8 @@ const MainPage = () => {
               active={activeItem === 0}
               onClick={() => handleItemClick(0)}
             >
-              <Icon name="cloud" />
-              首页
+              <Icon name="non binary transgender" />
+              &#8197;首页&#8197;
             </Menu.Item>
 
             <Menu.Item
@@ -85,15 +84,17 @@ const MainPage = () => {
               用户页面
             </Menu.Item>
           </Menu>
-        </Grid.Column>
+        </Grid.Row>
 
-        <Grid.Column width={12}>
+        <Grid.Row width={16} verticalAlign="middle">
           <Switch>
             <Route path="/home">
               <Home />
             </Route>
             <Route path="/word-cloud">
-              <Home />
+              <Grid.Column style={{ display: "flex", alignItems: "center" }}>
+                <WordCloudContainer />
+              </Grid.Column>
             </Route>
             <Route path="/danmaku-analysis">
               <Home />
@@ -105,7 +106,7 @@ const MainPage = () => {
               <Home />
             </Route>
           </Switch>
-        </Grid.Column>
+        </Grid.Row>
       </Grid>
     </Router>
   );
